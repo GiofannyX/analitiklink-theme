@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--meta content="#000000" name="theme-color"/-->
+<script defer src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<!--script src="https://cdn.tailwindcss.com"></script-->
+<link href="/output.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+<link rel="icon" href="/icon.svg"/>
+</head>
+<body class="container-2xl">
+<main class="">
+
+<header x-data="{ open: false }">
+<nav class="bg-slate-900 w-full py-3 border-bottom">
+  <div class="mx-auto px-2 flex justify-between" style="max-width: 800px;">
+    <div class="text-slate-300 font-semibold flex justify-between">
+	<div class="text-md">AnalitikLink <span class="text-sm text-slate-400 font-normal">Data Analytics</span></div>
+    </div>
+    <button @click="open = ! open" class="outline outline-offset-2 outline-1 hover:bg-slate-700 outline-slate-800" style="border-radius: 1px;">
+	<svg class="text-slate-300" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="24" width="24"/><rect fill="none" height="24" width="24"/></g><g><g><path d="M4,5h16c0.55,0,1-0.45,1-1c0-0.55-0.45-1-1-1H4C3.45,3,3,3.45,3,4C3,4.55,3.45,5,4,5z"/><path d="M20,19H4c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h16c0.55,0,1-0.45,1-1C21,19.45,20.55,19,20,19z"/></g></g></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="w-full bg-slate-800 text-sky-200 text-sm p-2" x-show="open">
+<div class="mx-auto columns-3 md:px-24 px-2 mx-auto" style="font-weight: 300; max-width: 800px;">
+	Menu 1<br/>
+	Menu 2<br/>
+	Menu 3<br/>
+	Menu 4<br/>
+	Menu 5<br/>
+	Menu 6<br/>
+	Menu 7<br/>
+	Menu 8<br/>
+	Menu 9
+</div>
+</div>
+</header>
+
+<div class="w-full mx-auto bg-neutral-900 border-b-1 border-neutral-800 text-slate-300">
+<div class="md:px-24 px-2 mx-auto pt-2 pb-2 overflow-x" style="max-width: 800px;">
+<canvas id="myChart" class="w-full" width="400" height="400"></canvas>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Pertalite', 'Pertamax', 'Solar'],
+        datasets: [{
+            label: 'Mata uang Rupiah',
+            data: [10000, 14000, 6800],
+            backgroundColor: [
+                'rgba(40, 10, 200, 0.6',
+		'rgba(40, 10, 255, 0.6)',
+		'rgba(40, 10, 230, 0.6)',
+            ],
+            borderColor: [
+		'rgba(200, 200, 200, 0.6)',
+                'rgba(200, 200, 200, 0.6)',
+                'rgba(200, 200, 200, 0.6)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+</div>
+</div>
+
+<div class="w-full h-20 mx-auto bg-slate-900 text-slate-400 border-t-2 border-slate-800" style="height: 900px; font-family: 'Roboto', sans-serif;">
+<div class="md:px-24 px-2 pt-2 pb-2 mx-auto text-sm tracking-wide" style="font-weight: 400; max-width: 800px;">
+<title class="block text-md py-2 text-slate-300">Harga Bahan Bakar Minyak BBM PT. Pertamina</title>
+<summary class="text-md block" style="font-weight: 400; font-family: Arial;">
+<time class="text-xs text-blue-200 block py-2 flex justify-start"><img src="data:image/jpeg;base64,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" class="h-4 w-4 bg-sky-200 border rounded-xl"/> &nbsp; Giofanny Sabekti - Jumat, 14 Oktober 2022.</time>
+Analitiklink mencatat analitik harga BBM PT Pertamina mulai 15 oktober 2022. Cara membaca harga di bagan dapat anda sentuh. Sedangkan deskripsi secara naratif dapat anda baca dan pahami dibawah ini.<br/>
+Harga jenis bahan bakar minyak dibagi menjadi 3 yaitu pertalite, pertamax dan solar. Harga Pertalite per 1 liter dengan harga 10.000 Rupiah dan harga pertamax per 1 liter dengan harga 14.500 rupiah serta solar per 1 liter dengan harga 6.800 Rupiah. Dibeberapa wilayah tertentu di suatu provinsi mungkin ada penyesuaian ketetapan harga ada wilayah yang sedikit penurunan dari harga umum dan sedikit kenaikan dari ketetapan harga BBM yang sudah diumumkan. Harga yang tercatat dibagan statistik cenderung tetap, tersebar diseluruh provinsi di indonesia terkecuali di provinsi Riau, Kepulauan Riau, Batam dan Bengkulu dengan ketetapan harga lebih tinggi dibandingkan di keseluruhan harga BBM di setiap provinsi di indonesia. Analitiklink akan memperbarui pencatatan harga dibagan analitik seiring dengan kebijakan baru dengan secepatnya.
+</summary>
+</div>
+</div>
+
+<section class="w-full mx-auto">
+<div class="md:px-24 px-2 mx-auto columns-2 flex justify-center py-10 bg-slate-100 border-t border-neutral-200" style="max-width: 800px;">
+<p class="block px-4 w-3/4">Komentar hanya tersedia di server discord, Ajukan permohonan terkait privasi, data rahasia, data salah, DisInformasi dan Report.</p>
+<button type="button" class="btn block mx-auto bg-neutral-900 hover:bg-blue-400 hover:text-neutral-100 px-2 border border-white text-sm text-center text-slate-300 rounded-lg">
+Join Discord
+</button>
+</div>
+</section>
+
+<footer class="md:px-24 px-2 py-6 bg-indigo-900 bottom-0">
+<div class="flex text-gray-200">
+<h1 class="mb-6 font-semibold">
+<div><svg class="rotate-45 mr-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 3.87v.02c0 .67.45 1.23 1.08 1.43C16.93 6.21 19 8.86 19 12c0 .52-.06 1.01-.17 1.49-.14.64.12 1.3.69 1.64l.01.01c.86.5 1.98.05 2.21-.91.17-.72.26-1.47.26-2.23 0-4.5-2.98-8.32-7.08-9.57-.95-.29-1.92.44-1.92 1.44zm-2.06 15.05c-2.99-.43-5.42-2.86-5.86-5.84-.54-3.6 1.66-6.77 4.83-7.76.64-.19 1.09-.76 1.09-1.43v-.02c0-1-.97-1.73-1.93-1.44-4.51 1.38-7.66 5.86-6.98 10.96.59 4.38 4.13 7.92 8.51 8.51 3.14.42 6.04-.61 8.13-2.53.74-.68.61-1.89-.26-2.39-.58-.34-1.3-.23-1.8.22-1.47 1.34-3.51 2.05-5.73 1.72z"/></svg></div><h1>Copyright © AnalitikLink</h1> <span class="px-2 text-md text-sky-100">Data Analytic</span>
+</div>
+<div class="font-normal flex justify-between md:justify-evenly text-gray-300">
+<a href="/about.html" rel="nofollow" class="border-t hover:border-t-4 px-1 py-1">About</a>
+<a href="/support.html" rel="nofollow" class="border-t hover:border-t-4 px-1 py-1">Support</a>
+<a href="/disclaimer.html" rel="nofollow" class="border-t hover:border-t-4 px-1 py-1">Disclaimer</a>
+<a href="/privacy.html" rel="nofollow" class="border-t hover:border-t-4 p-1 px-1 py-1">Privacy</a>
+</div>
+</footer>
+
+</main>
+</body>
+</html>
